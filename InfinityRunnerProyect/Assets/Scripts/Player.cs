@@ -31,10 +31,11 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.S) && isJumping == true)
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
+            //GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
+            Crouch.SetActive(false);
         }
 
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.S) && isJumping == false)
         {
             Crouch.SetActive(true);
             Stand.SetActive(false);
