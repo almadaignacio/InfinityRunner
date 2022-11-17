@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     public int fuerzaDeSalto = 5;
     public bool isJumping;
     Rigidbody2D rb;
+    public Animator playerAnimator;
 
     public GameManager gameManager;
 
@@ -27,12 +28,14 @@ public class Player : MonoBehaviour
         {
             GetComponent<Rigidbody2D>().velocity = new Vector3(0, fuerzaDeSalto, 0);
             isJumping = true;
+            playerAnimator.SetTrigger("Jp");
         }
 
         if (Input.GetKeyDown(KeyCode.S) && isJumping == true)
         {
             //GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
             Crouch.SetActive(false);
+            
         }
 
         if (Input.GetKey(KeyCode.S) && isJumping == false)
@@ -48,9 +51,10 @@ public class Player : MonoBehaviour
         if(collision.gameObject.CompareTag("Floor"))
         {
             isJumping = false;
+            playerAnimator.SetTrigger("Njp");
         }
 
-        if(collision.gameObject.CompareTag("Obstacle"))
+        if (collision.gameObject.CompareTag("Obstacle"))
         {
             //Time.timeScale = 0;    
             gameManager.GameOver();

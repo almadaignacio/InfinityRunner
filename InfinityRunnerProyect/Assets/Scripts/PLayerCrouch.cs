@@ -8,6 +8,7 @@ public class PLayerCrouch : MonoBehaviour
     public GameObject Crouch;
 
     public GameManager gameManager;
+    public Animator CrouchAnimator;
 
     // Start is called before the first frame update
     void Start()
@@ -18,10 +19,16 @@ public class PLayerCrouch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            CrouchAnimator.SetTrigger("Again");
+        }
+
+            if (Input.GetKeyUp(KeyCode.S))
         {
             Crouch.SetActive(false);
             Stand.SetActive(true);
+           
         }
     }
 
