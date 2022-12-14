@@ -6,18 +6,18 @@ using TMPro;
 
 public class Score : MonoBehaviour
 {
-    public Text HiScoreText;
-    int score;
-    Text scoreText;   
+    public Text HighScoreText;
+    public int scoreNumber;
+    public Text scoreText;   
 
-    float Timer;
-    float maxTime;
+    public float Timer;
+    public float maxTime;
 
     // Start is called before the first frame update
     void Start()
     {
-        HiScoreText.text = "HI   " + PlayerPrefs.GetInt("highscore", 0).ToString("00000");
-        score = 0;
+        HighScoreText.text = "HI   " + PlayerPrefs.GetInt("highscore", 0).ToString("00000");
+        scoreNumber = 0;
         scoreText = GetComponent<Text>();
         maxTime = 0.1f;
     }
@@ -25,20 +25,27 @@ public class Score : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        Punctuation();
+        
+    }
+
+     private void Punctuation()
+    {
         Timer += Time.deltaTime;
-        if(Timer >= maxTime)
+        if (Timer >= maxTime)
         {
-            score++;
-            scoreText.text = score.ToString("00000");
+            scoreNumber++;
+            scoreText.text = scoreNumber.ToString("00000");
             Timer = 0;
         }
 
-        if(Time.timeScale == 0)
+        if (Time.timeScale == 0)
         {
-            if(score > PlayerPrefs.GetInt("highscore", 0))
+            if (scoreNumber > PlayerPrefs.GetInt("highscore", 0))
             {
-                PlayerPrefs.SetInt("highscore", score);
-                HiScoreText.text = "HI   " + PlayerPrefs.GetInt("highscore", 0).ToString("00000");
+                PlayerPrefs.SetInt("highscore", scoreNumber);
+                HighScoreText.text = "HI   " + PlayerPrefs.GetInt("highscore", 0).ToString("00000");
             }
 
         }
