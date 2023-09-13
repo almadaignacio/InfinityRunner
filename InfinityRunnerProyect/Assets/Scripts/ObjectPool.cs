@@ -11,7 +11,15 @@ public class ObjectPool : MonoBehaviour
 
     private void Awake()
     {
+        if(Instance == null)
+        {
             Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
     }
 
     private void Start()
@@ -36,7 +44,6 @@ public class ObjectPool : MonoBehaviour
         {
             if(!objectList[i].activeInHierarchy)
             {
-                objectList[i].SetActive(true);
                 return objectList[i];
             }
         }
