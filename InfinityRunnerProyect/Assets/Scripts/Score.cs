@@ -7,11 +7,11 @@ using TMPro;
 public class Score : MonoBehaviour
 {
     public Text highScoreText;
-    public int scoreNumber;
+    int scoreNumber;
     public Text scoreText;   
 
-    public float timer;
-    public float maxTime;
+    float timer;
+    float maxTime;
 
     void Start()
     {
