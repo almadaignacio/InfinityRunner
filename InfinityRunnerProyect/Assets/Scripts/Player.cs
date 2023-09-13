@@ -4,38 +4,37 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public GameObject Stand;
-    public GameObject Crouch;
-    public int fuerzaDeSalto = 5;
-    public bool isJumping;
+    [SerializeField] private GameObject Stand;
+    [SerializeField] private GameObject Crouch;
+    [SerializeField] private int jump = 5;
+    private bool isJumping;
     Rigidbody2D rb;
-    public Animator playerAnimator;
+    Animator playerAnimator;
+    GameManager gameManager;
 
-    public GameManager gameManager;
-
-    // Start is called before the first frame update
     void Start()
     {
+        if (gameManager == null)
+        {
+            gameManager = FindObjectOfType<GameManager>();
+        }
         isJumping = false;
         rb = GetComponent<Rigidbody2D>();
-
+        playerAnimator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Space) && isJumping == false)
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector3(0, fuerzaDeSalto, 0);
+            rb.velocity = new Vector3(0, jump, 0);
             isJumping = true;
             playerAnimator.SetTrigger("Jp");
         }
 
         if (Input.GetKeyDown(KeyCode.S) && isJumping == true)
         {
-            //GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
             Crouch.SetActive(false);
-            
         }
 
         if (Input.GetKey(KeyCode.S) && isJumping == false)
@@ -43,7 +42,6 @@ public class Player : MonoBehaviour
             Crouch.SetActive(true);
             Stand.SetActive(false);
         }
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -55,15 +53,6 @@ public class Player : MonoBehaviour
         }
 
         if (collision.gameObject.CompareTag("Obstacle"))
-        {
-            //Time.timeScale = 0;    
-            gameManager.GameOver();
-        }
-    }
-
-    private void OnTrigerEnter2D(Collider2D collision)
-    {
-        if(collision.tag == "Obstacle")
         {
             gameManager.GameOver();
         }

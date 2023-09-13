@@ -8,12 +8,6 @@ public class SceneController : MonoBehaviour
     public bool Level;
     public int indexlevel;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -21,7 +15,6 @@ public class SceneController : MonoBehaviour
         {
             ChangeLevel(indexlevel);
         }
-
     }
 
     public void ChangeLevel(int index)

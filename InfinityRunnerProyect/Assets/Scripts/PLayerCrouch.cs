@@ -6,45 +6,29 @@ public class PLayerCrouch : MonoBehaviour
 {
     public GameObject Stand;
     public GameObject Crouch;
+    public static GameManager gameManager;
 
-    public GameManager gameManager;
-    public Animator CrouchAnimator;
-
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        if(gameManager == null)
+        {
+            gameManager = FindObjectOfType<GameManager>();
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            CrouchAnimator.SetTrigger("Again");
-        }
-
-            if (Input.GetKeyUp(KeyCode.S))
+        if (Input.GetKeyUp(KeyCode.S))
         {
             Crouch.SetActive(false);
-            Stand.SetActive(true);
-           
-        }
-    }
-
-    private void OnTrigerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "Obstacle")
-        {
-            gameManager.GameOver();
+            Stand.SetActive(true); 
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
-    {
+    { 
         if (collision.gameObject.CompareTag("Obstacle"))
-        {
-            //Time.timeScale = 0;    
+        {  
             gameManager.GameOver();
         }
     }
