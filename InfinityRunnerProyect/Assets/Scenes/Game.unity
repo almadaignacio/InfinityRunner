@@ -2068,10 +2068,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highScoreText: {fileID: 0}
-  scoreNumber: 0
   scoreText: {fileID: 0}
-  timer: 0
-  maxTime: 0
 --- !u!114 &765033352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2433,10 +2430,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highScoreText: {fileID: 0}
-  scoreNumber: 0
   scoreText: {fileID: 0}
-  timer: 0
-  maxTime: 0
 --- !u!114 &979704087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2949,7 +2943,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPrefab: {fileID: 300779375743687747, guid: a0034e8708f2e384a87100c92e1f8e29, type: 3}
   objectList: []
-  objectSize: 8
+  objectSize: 1
 --- !u!4 &1189156444
 Transform:
   m_ObjectHideFlags: 0
@@ -4246,10 +4240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highScoreText: {fileID: 199394712}
-  scoreNumber: 0
   scoreText: {fileID: 1812962546}
-  timer: 0
-  maxTime: 0
 --- !u!114 &1812962546
 MonoBehaviour:
   m_ObjectHideFlags: 0

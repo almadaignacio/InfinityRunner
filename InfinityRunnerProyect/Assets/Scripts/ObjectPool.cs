@@ -46,6 +46,8 @@ public class ObjectPool : MonoBehaviour
                 return objectList[i];
             }
         }
-        return null;
+        GenerateObjectPrefab(1);
+        objectList[objectList.Count - 1].SetActive(true);
+        return objectList[objectList.Count - 1];
     }
 }
